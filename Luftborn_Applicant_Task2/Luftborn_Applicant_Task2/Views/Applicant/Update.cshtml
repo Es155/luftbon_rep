@@ -1,0 +1,89 @@
+﻿@model ApplicantModel
+
+    <h2>Add Applicant</h2>
+
+    <div ng-app="Applicant" ng-controller="ApplicantController">
+        <div class="card" style="width: 100%;">
+            <form method="post">
+                @Html.HiddenFor(x=>x.ApplicantID)
+                @Html.HiddenFor(x=>x.CreatedOn)
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group row">
+                                <div class="col-md-3">
+                                    <div class="label-wrapper">
+                                        <label class="col-form-label" for="Applicant Name"> Name</label>  <i class="fa fa-question-circle" style="color:dodgerblue"></i>
+                                        <div title="" data-toggle="tooltip" class="ico-help" data-original-title="Search by a specific email.">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-8">
+                                    <input class="form-control text-box single-line" id="SearchEmail" name="ApplicantName" value="@Model.ApplicantName" type="text" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group row">
+                                <div class="col-md-4">
+                                    <div class="label-wrapper">
+                                        <label class="col-form-label" for="SearchEmail">Title</label>  <i class="fa fa-question-circle" style="color:dodgerblue"></i>
+                                        <div title="" data-toggle="tooltip" class="ico-help" data-original-title="Search by a specific email."></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <input class="form-control text-box single-line" id="SearchEmail" name="ApplicantTitle" value="@Model.ApplicantTitle"type="text" required autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-md-5">
+                            <div class="form-group row">
+                                <div class="col-md-3">
+                                    <div class="label-wrapper">
+                                        <label class="col-form-label" for="SearchEmail">Number</label>  <i class="fa fa-question-circle" style="color:dodgerblue"></i>
+                                        <div title="" data-toggle="tooltip" class="ico-help" data-original-title="Search by a specific email.">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-8">
+                                    <input class="form-control text-box single-line" id="Pass" name="ApplicantNumber" value="@Model.ApplicantNumber" type="text" autocomplete="off" required value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group row">
+                                <div class="col-md-3">
+                                    <div class="label-wrapper">
+                                        <label class="col-form-label" for="SearchEmail">Status</label>  <i class="fa fa-question-circle" style="color:dodgerblue"></i>
+                                        <div title="" data-toggle="tooltip" class="ico-help" data-original-title="Search by a specific email.">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-8">
+                                    <select class="form-control text-box single-line" id="Pass" value="@Model.Status" name="Status" type="checkbox">
+                                        <option value="1">Accepted hr</option>
+                                        <option value="2">Accepted technicl</option>
+                                        <option value="3">Rejected hr</option>
+                                        <option value="4">Rejected technicl</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row" style="margin-top:20px">
+                        <div class="text-center col-12">
+                            <button type="submit" class="btn btn-primary btn-search">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>

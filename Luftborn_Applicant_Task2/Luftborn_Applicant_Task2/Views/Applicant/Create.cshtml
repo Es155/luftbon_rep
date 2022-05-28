@@ -1,0 +1,143 @@
+﻿@model ApplicantViewModel
+
+<header>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="~/Scripts/ApplicantController.js"></script>
+</header>
+<h2>Add Applicant</h2>
+
+@if (TempData["Message"] != null)
+{
+
+    <div class="alert alert-success" role="alert">
+        @TempData["Message"]
+    </div>
+}
+
+<div class="card" style="width: 100%;">
+    <form method="post">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <div class="label-wrapper">
+                                <label class="col-form-label" for="Applicant Name"> Name</label>  <i class="fa fa-question-circle" style="color:dodgerblue"></i>
+                                <div title="" data-toggle="tooltip" class="ico-help" data-original-title="Search by a specific email.">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control text-box single-line" id="SearchEmail" name="ApptModel.ApplicantName" type="text" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <div class="label-wrapper">
+                                <label class="col-form-label" for="SearchEmail">Title</label>  <i class="fa fa-question-circle" style="color:dodgerblue"></i>
+                                <div title="" data-toggle="tooltip" class="ico-help" data-original-title="Search by a specific email."></div>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control text-box single-line" id="SearchEmail" name="ApptModel.ApplicantTitle" type="text" required autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 20px">
+                <div class="col-md-5">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <div class="label-wrapper">
+                                <label class="col-form-label" for="SearchEmail">Number</label>  <i class="fa fa-question-circle" style="color:dodgerblue"></i>
+                                <div title="" data-toggle="tooltip" class="ico-help" data-original-title="Search by a specific email.">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-8">
+                            <input class="form-control text-box single-line" id="Pass" name="ApptModel.ApplicantNumber" type="text" autocomplete="off" required value="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <div class="label-wrapper">
+                                <label class="col-form-label" for="SearchEmail">Status</label>  <i class="fa fa-question-circle" style="color:dodgerblue"></i>
+                                <div title="" data-toggle="tooltip" class="ico-help" data-original-title="Search by a specific email.">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control text-box single-line" id="Pass" name="ApptModel.Status" type="checkbox" value="">
+                                <option value="1">Accepted hr</option>
+                                <option value="2">Accepted technicl</option>
+                                <option value="3">Rejected hr</option>
+                                <option value="4">Rejected technicl</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" style="margin-top:20px">
+                <div class="text-center col-12">
+                    <button type="submit" class="btn btn-primary btn-search">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="card">
+    <div class="card-body">
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model.ListOfApplicant)
+                {
+                    <tr>
+                        <th>@row.ApplicantName</th>
+                        <th>@row.ApplicantTitle</th>
+                        <th>@row.ApplicantNumber</th>
+                        <th>@row.Status</th>
+                        <th>
+                            <a href="@Url.Action("Update",new {id = row.ApplicantID })" class="fa fa-pencil-square" style="color :forestgreen"></a>
+                            <a href="@Url.Action("Delete",new {id = row.ApplicantID })" class="fa-solid fa-trash" style="color :red"></a>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+<style>
+    .card {
+        box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+        margin-bottom: 1rem;
+        width: 100%
+    }
+</style>
